@@ -4,5 +4,12 @@
   "main": "index.js",
   "repository": "git@github.com:mole-squad/constituent.git",
   "author": "Burke Livingston <burkel24@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "fs-extra": "^5.0.0",
+    "geojson-geometries-lookup": "^0.2.5",
+    "glob": "^7.1.2",
+    "node-geocoder": "^3.21.1"
+  }
 }
