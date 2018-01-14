@@ -1,0 +1,8 @@
+{
+  "name": "constituent",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:mole-squad/constituent.git",
+  "author": "Burke Livingston <burkel24@gmail.com>",
+  "license": "MIT"
+}
