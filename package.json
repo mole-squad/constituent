@@ -5,6 +5,9 @@
   "repository": "git@github.com:mole-squad/constituent.git",
   "author": "Burke Livingston <burkel24@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "webpack --watch"
+  },
   "dependencies": {
     "body-parser": "^1.18.2",
     "dotenv": "^4.0.0",
