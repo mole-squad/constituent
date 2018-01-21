@@ -5,14 +5,15 @@ const OUT_DIR = path.join(__dirname, 'dist');
 
 module.exports = {
   entry: {
-    constituencyService: './constituencyService/app.ts'
+    constituencyService: './constituencyService/app.ts',
+    api: './api/app.ts'
   },
   target: 'node',
   externals: [
     /^[a-z\-0-9]+$/
   ],
   output: {
-    filename: 'constituencyService.js',
+    filename: '[name].js',
     path: OUT_DIR,
     libraryTarget: "commonjs"
   },
@@ -34,9 +35,8 @@ module.exports = {
   },
   plugins: [
     new Nodemon({
-      watch: OUT_DIR,
-      verbose: true,
-      script: `${OUT_DIR}/constituencyService.js`
+      watch: `${OUT_DIR}`,
+      script: `./devserver.js`
     })
   ]
 };
