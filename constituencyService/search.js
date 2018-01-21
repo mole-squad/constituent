@@ -1,7 +1,6 @@
 const GeoJsonGeometriesLookup = require('geojson-geometries-lookup');
 const NodeGeocoder = require('node-geocoder');
 
-
 module.exports.getLocation = function(address) {
 	const geocoder = NodeGeocoder({
 		provider: 'google',

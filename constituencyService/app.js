@@ -1,7 +1,8 @@
 const bodyParser  = require('body-parser');
 const express = require('express');
+require('dotenv').config();
 
-const { loadDistricts } = require('./dataLoaders');
+const { loadDistricts, loadRepresentatives } = require('./dataLoaders');
 const { findDistrict, getLocation } = require('./search');
 
 const app = express();
@@ -23,7 +24,8 @@ app.get('/representatives', (req, res) => {
 
 	getLocation(address).then(({ state, latitude, longitude }) => {
 		return findDistrict(DISTRICT_MAP, state, latitude, longitude);
-	}).then(data => res.json(data));
+	}).then(data => res.json(data))
+		.catch(() => console.error('TODO'));
 });
 
 const startApp = () => {
@@ -35,5 +37,8 @@ const startApp = () => {
 
 loadDistricts().then(districtGeoData => {
 	DISTRICT_MAP = districtGeoData;	
-	startApp();
-});
+	return loadRepresentatives();
+}).then(([ senateMembers, houseMembers ]) => {
+
+	
+}).then(() => startApp());
