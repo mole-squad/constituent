@@ -1,7 +1,7 @@
-const GeoJsonGeometriesLookup = require('geojson-geometries-lookup');
-const NodeGeocoder = require('node-geocoder');
+import * as GeoJsonGeometriesLookup from 'geojson-geometries-lookup';
+import * as NodeGeocoder from 'node-geocoder';
 
-module.exports.getLocation = function(address) {
+export function getLocation(address) {
 	const geocoder = NodeGeocoder({
 		provider: 'google',
 		httpAdapter: 'https',
@@ -26,7 +26,7 @@ module.exports.getLocation = function(address) {
 }
 
 
-module.exports.findDistrict = function(districtGeoData, state, latitude, longitude) {
+export function findDistrict(districtGeoData, state, latitude, longitude) {
 	
 	const features = Object.keys(districtGeoData)
 		.filter(aDistrict => aDistrict.includes(state))

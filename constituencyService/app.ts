@@ -1,10 +1,11 @@
-const bodyParser  = require('body-parser');
-const express = require('express');
-require('dotenv').config();
+import * as bodyParser  from 'body-parser';
+import * as express from 'express';
+import * as dotenv from 'dotenv';
 
-const { loadDistricts, loadRepresentatives } = require('./dataLoaders');
-const { findDistrict, getLocation } = require('./search');
+import { loadDistricts, loadRepresentatives } from './dataLoaders';
+import { findDistrict, getLocation } from './search';
 
+dotenv.config();
 const app = express();
 
 app.set('host', '0.0.0.0');
@@ -40,5 +41,5 @@ loadDistricts().then(districtGeoData => {
 	return loadRepresentatives();
 }).then(([ senateMembers, houseMembers ]) => {
 
-	
+
 }).then(() => startApp());

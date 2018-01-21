@@ -1,13 +1,13 @@
 const fs = require('fs');
 
-module.exports.loadRepresentatives = function() {
+export function loadRepresentatives() {
 	const currentNo = 115;
 	let house, senate;
 
 	return Promise.all([ 
 		getChamberMembers('senate', currentNo),
 		getChamberMembers('house', currentNo)
-	]).;
+	]);
 };
 
 function getChamberMembers(name, number) {
@@ -21,7 +21,7 @@ function getChamberMembers(name, number) {
 }
 
 
-module.exports.loadDistricts = function() {
+export function loadDistricts() {
 	const directory = './data/districtGeoJSON';
 	const districts = fs.readdirSync(directory, 'utf8');
 	const dataMap = {};
