@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 
 app.set('host', '0.0.0.0');
-app.set('port', process.env.SERVER_PORT || 8080);
+app.set('port', process.env.CONSTITUENCY_SERVICE_PORT || 8080);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

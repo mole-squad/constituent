@@ -2,8 +2,6 @@ import * as fs from 'fs';
 
 export function loadRepresentatives() {
   const currentNo = 115;
-  const house;
-  const senate;
 
   return Promise.all([
     getChamberMembers('senate', currentNo),
@@ -23,7 +21,7 @@ function getChamberMembers(name, congressNumber) {
 
 export function loadDistricts() {
   const directory = './data/districtGeoJSON';
-  const districts = fs.readdirSync(directory, 'utf8');
+  const districts = fs.readdirSync(directory);
   const dataMap = {};
 
   const promises = districts.map((aDistrict) => {
