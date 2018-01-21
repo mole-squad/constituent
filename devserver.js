@@ -1,9 +1,6 @@
 const childProc = require('child_process');
 
-// grep.stdout.on('data', (data) => {
-//   console.log(data.toString());
-// });
-
+// Some glue to start/restart all the servers
 const children = [
   { name: 'API', proc: childProc.spawn('node', ['./dist/api.js']) },
   { name: 'Constituency', proc: childProc.spawn('node', ['./dist/constituencyService.js']) }
