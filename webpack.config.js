@@ -5,8 +5,7 @@ const OUT_DIR = path.join(__dirname, 'dist');
 
 module.exports = {
   entry: {
-    constituencyService: './constituencyService/app.ts',
-    api: './api/app.ts'
+    constituencyService: './constituencyService/app.ts'
   },
   target: 'node',
   externals: [
