@@ -1,10 +1,10 @@
-import { Router } from 'express';
+import { Router } from "express";
 
-import * as AuthController from '../controllers/AuthController';
+import * as AuthController from "../controllers/AuthController";
 
 const AuthRouter = Router();
 
-AuthRouter.route('/facebooklogin')
+AuthRouter.route("/facebooklogin")
   .post(AuthController.facebookLogin, (req, res, next) => {
     const token = AuthController.getToken(req.user);
 

@@ -1,28 +1,26 @@
-import * as passport from 'passport';
-import * as FacebookStrategy from 'passport-facebook-token';
-import * as jwt from 'jsonwebtoken';
+import * as jwt from "jsonwebtoken";
+import * as passport from "passport";
+import * as FacebookStrategy from "passport-facebook-token";
 
-import User from '../models/user';
+import User from "../models/user";
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
+passport.deserializeUser((id, done) => {
+  User.findById(id, (err, user) => {
     done(err, user);
   });
 });
 
 passport.use(new FacebookStrategy({
   clientID: process.env.FACEBOOK_CLIENT_ID,
-  clientSecret: process.env.FACEBOOK_SECRET
-},
-function(token, refreshToken, profile, done) {
-  process.nextTick(function() {
-    User.findOne({ 'facebook.id' : profile.id }, function(err, user) {
+  clientSecret: process.env.FACEBOOK_SECRET,
+}, (token, refreshToken, profile, done) => {
+  process.nextTick(() => {
+    User.findOne({ "facebook.id" : profile.id }, (err, user) => {
       if (err) {
-        console.log(err);
         return done(err);
       }
 
@@ -43,8 +41,8 @@ function(token, refreshToken, profile, done) {
           newUser.facebook.name = `Facebook user ${profile.id}`;
         }
 
-        newUser.save(function(err) {
-          if (err) throw err;
+        newUser.save((saveErr) => {
+          if (saveErr) { throw saveErr; }
           return done(null, newUser);
         });
       }
@@ -52,7 +50,7 @@ function(token, refreshToken, profile, done) {
   });
 }));
 
-export const facebookLogin = passport.authenticate('facebook-token');
+export const facebookLogin = passport.authenticate("facebook-token");
 
 export const getToken = (user) => {
   const secret = process.env.APP_SECRET;
@@ -62,6 +60,6 @@ export const getToken = (user) => {
   return { token, expiresAt: Date.now() + expiresIn * 1000 };
 };
 
-function getExpiration(noHours) : number {
+export const getExpiration = (noHours): number => {
   return noHours * 3600;
-}
+};

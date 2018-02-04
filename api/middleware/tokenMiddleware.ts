@@ -1,6 +1,6 @@
 import * as jwt from "jsonwebtoken";
 
-import User from "../src/models/user";
+import User from "../models/user";
 
 const reject = (res, status, message) => {
   return res.status(status).json({

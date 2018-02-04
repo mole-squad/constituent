@@ -2,7 +2,13 @@
   "ignore": [
     "node_modules"
   ],
-  "watch": ["src", "middleware", "index.ts"],
+  "watch": [
+    ".", 
+    "controllers",
+    "models",
+    "routes",
+    "middleware"
+  ],
   "exec": "ts-node index.ts",
   "ext": "ts"
 }

@@ -3,7 +3,7 @@ import * as mongoose from 'mongoose';
 
 dotenv.config();
 
-import app from './src/app';
+import app from './app';
 
 mongoose.connect(process.env.MONGO_URI);
 
