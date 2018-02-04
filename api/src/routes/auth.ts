@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 import * as AuthController from '../controllers/AuthController';
 
-const AuthRouter = new Router();
+const AuthRouter = Router();
 
 AuthRouter.route('/facebooklogin')
   .post(AuthController.facebookLogin, (req, res, next) => {
